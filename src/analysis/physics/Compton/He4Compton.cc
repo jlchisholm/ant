@@ -878,6 +878,14 @@ void He4Compton::ShowResult()
     ant::canvas(GetName()+": Scalar Counts")
             << h_ScalarCounts
             << endc;
+
+    ant::canvas(GetName()+": Missing Energy")
+            << h_ME1
+            << endc;
+
+    ant::canvas(GetName()+": Missing Energy 3D")
+            << h3D_ME1
+            << endc;
 }
 
 // ---------------- Registering the Class ----------------
