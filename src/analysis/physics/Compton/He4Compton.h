@@ -62,6 +62,10 @@ public:
                           const LorentzVec target,
                           const LorentzVec incoming);
 
+    double GetMissingEnergy(const TCandidate& candidate,
+                            const LorentzVec target,
+                            const LorentzVec photon);
+
     double GetCloserMM(const TCandidateList& candidates,
                        const LorentzVec target,
                        const LorentzVec incoming);
@@ -102,6 +106,7 @@ private:
     // 1 Particle cuts
 //    TH1D* h_MM101;
     TH1D* h_MM111;
+    TH1D* h_ME1;
 
     // Preliminary 2 particle cuts
 //    TH1D* h_MM102;
@@ -126,6 +131,7 @@ private:
     TH3D* h3D_MM111;
     TH3D* h3D_MM112011;
     TH3D* h3D_MM112011_switch;
+    TH3D* h3D_ME1;
 
     // 3D Plot Projections
     TH1D* h3D_MM111_projX;
@@ -134,6 +140,7 @@ private:
 
     // Scalar Counter
     TH1D* h_ScalarCounts;
+
 
     // Stuff for PR cut
     PromptRandom::Switch promptrandom;
@@ -174,6 +181,7 @@ private:
 
     double missing_mass;
     double closer_missing_mass;
+    double missing_energy;
 
 };
 

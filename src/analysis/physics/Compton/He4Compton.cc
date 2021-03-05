@@ -19,6 +19,7 @@ He4Compton::He4Compton(const string& name, OptionsPtr opts) :
     // Bins used in histograms
     const BinSettings time_bins(2000, -200, 200);
     const BinSettings mass_bins(250,3500,4000);   // will need to be changed for proton target
+    const BinSettings energy_bins(250,-250,250);
     const BinSettings angle_bins(18, 0, 180);
     const BinSettings taggerchannel_bins(nchannels);
 
@@ -34,6 +35,11 @@ He4Compton::He4Compton(const string& name, OptionsPtr opts) :
                                      mass_bins,
                                      "h_MM111"
                                      );
+    h_ME1 = HistFac.makeTH1D("1 Particle, Uncharged, Missing Energy",
+                                     "Missing Energy [MeV]","#",
+                                     energy_bins,
+                                     "h_ME1"
+                                     );
     h3D_MM111 = HistFac.makeTH3D("1 Particle, Uncharged",
                                  "Missing Mass [MeV]",
                                  "Angle [deg]",
@@ -42,6 +48,15 @@ He4Compton::He4Compton(const string& name, OptionsPtr opts) :
                                  angle_bins,
                                  taggerchannel_bins ,
                                  "h3D_MM111"
+                                 );
+    h3D_ME1 = HistFac.makeTH3D("1 Particle, Uncharged, Missing Energy",
+                                 "Missing Energy [MeV]",
+                                 "Angle [deg]",
+                                 "Tagger Channel",
+                                 energy_bins,
+                                 angle_bins,
+                                 taggerchannel_bins ,
+                                 "h3D_ME1"
                                  );
     h3D_MM111_projX = HistFac.makeTH1D("1 Particle, Uncharged",
                                      "mass [MeV/c^2]","#",
@@ -222,6 +237,37 @@ double He4Compton::GetMissingMass(const TCandidate& candidate,
     // involving this particle
     return (incoming + target - scattered).M();
 }
+
+
+// Input: scattered photon, target, and incoming photon 4-momentum vectors
+// Output: missing energy of the scattered photon
+double He4Compton::GetMissingEnergy(const TCandidate& candidate,
+                                    const LorentzVec target,
+                                    const LorentzVec photon)
+{
+    vec3 unit_vec = vec3(candidate);
+    LorentzVec scattered = LorentzVec({unit_vec.x*candidate.CaloEnergy,
+                                       unit_vec.y*candidate.CaloEnergy,
+                                       unit_vec.z*candidate.CaloEnergy},
+                                      candidate.CaloEnergy);
+
+    // Frame stuff
+    LorentzVec total_incoming = target + photon;
+    vec3 cmBoost = -total_incoming.BoostVector();
+
+    // Photon CM Energy Measured
+    LorentzVec scattered_vec_cm = scattered;
+    scattered_vec_cm.Boost(cmBoost);
+    double scattered_E_cm = scattered_vec_cm.E;
+
+    // Photon CM Energy Reconstructed
+    double S = total_incoming.M2();
+    double scattered_E_cm_rec = (S - pow(target_mass,2))/(2*sqrt(S));
+
+    return (scattered_E_cm - scattered_E_cm_rec);
+}
+
+
 
 // Used for a 2 particle events.
 // Calculates the missing mass using both particles, the outputs
@@ -505,6 +551,7 @@ void He4Compton::ProcessEvent(const TEvent& event, manager_t&)
             for (const auto& candidate : event.Reconstructed().Candidates)
             {
                 missing_mass = GetMissingMass(candidate, target_vec, incoming_vec);
+                missing_energy = GetMissingEnergy(candidate, target_vec, incoming_vec);
 
                 // 1 particle in event
 //                h_MM101->Fill(missing_mass, weight);
@@ -513,9 +560,13 @@ void He4Compton::ProcessEvent(const TEvent& event, manager_t&)
                 {
                     // 1 particle in event, particle is uncharged
                     h_MM111->Fill(missing_mass, weight);
+                    h_ME1->Fill(missing_energy, weight);
+
 
                     // Filling 3D Plot
                     h3D_MM111->Fill(missing_mass, std_ext::radian_to_degree(candidate.Theta),
+                                    taggerhit.Channel, weight);
+                    h3D_ME1->Fill(missing_energy, std_ext::radian_to_degree(candidate.Theta),
                                     taggerhit.Channel, weight);
                 }
             }
