@@ -27,104 +27,108 @@ He4Pi0::He4Pi0(const string& name, OptionsPtr opts) :
 // ------------ Histograms Created Here but not Filled ------------
 
     h_WeightedTaggerTime = HistFac.makeTH1D("Weighted Tagger Time",
-                                    "t [ns]","#",
+                                    "t (ns)","#",
                                     time_bins,
                                     "h_WeightedTaggerTime"
                                     );
-    h_MM111 = HistFac.makeTH1D("1 Particle, Uncharged",
-                                     "mass [MeV/c^2]","#",
-                                     mass_bins,
-                                     "h_MM111"
-                                     );
-    h3D_MM111 = HistFac.makeTH3D("1 Particle, Uncharged",
-                                 "Missing Mass [MeV]",
-                                 "Angle [deg]",
-                                 "Tagger Channel",
-                                 mass_bins,
-                                 angle_bins,
-                                 taggerchannel_bins ,
-                                 "h3D_MM111"
-                                 );
-    h3D_MM111_projX = HistFac.makeTH1D("1 Particle, Uncharged",
-                                     "mass [MeV/c^2]","#",
-                                     mass_bins,
-                                     "h3D_MM111_projX"
-                                     );
-    h_MM112011 = HistFac.makeTH1D("2 Particles, Open Ang < 15, "
-                                  "Coplanar, Uncharged",
-                                  "mass [MeV/c^2]","#",
-                                  mass_bins,
-                                  "h_MM112011"
-                                     );
-    h3D_MM112011 = HistFac.makeTH3D("2 Particles, Open Ang < 15, "
-                                    "Coplanar, Uncharged",
-                                    "Missing Mass [MeV]",
-                                    "Angle [deg]",
-                                    "Tagger Channel",
-                                    mass_bins,
-                                    angle_bins,
-                                    taggerchannel_bins ,
-                                    "h3D_MM112011"
-                                    );
-    h3D_MM112011_projX = HistFac.makeTH1D("2 Particles, Open Ang < 15, "
-                                  "Coplanar, Uncharged",
-                                  "mass [MeV/c^2]","#",
-                                  mass_bins,
-                                  "h3D_MM112011_projX"
-                                     );
-    h_MM112011_switch = HistFac.makeTH1D("2 Particles, One is Uncharged, "
-                                         "Open Ang < 15, Coplanar",
-                                         "mass [MeV/c^2]","#",
-                                         mass_bins,
-                                         "h_MM112011_switch"
-                                         );
-    h3D_MM112011_switch = HistFac.makeTH3D("2 Particles, One is Uncharged, "
-                                           "Open Ang < 15, Coplanar",
-                                           "Missing Mass [MeV]",
-                                           "Angle [deg]",
-                                           "Tagger Channel",
-                                           mass_bins,
-                                           angle_bins,
-                                           taggerchannel_bins ,
-                                           "h3D_MM112011_switch"
-                                           );
-    h3D_MM112011_switch_projX = HistFac.makeTH1D("2 Particles, One is Uncharged, "
-                                         "Open Ang < 15, Coplanar",
-                                         "mass [MeV/c^2]","#",
-                                         mass_bins,
-                                         "h3D_MM112011_switch_projX"
-                                         );
+   // h_MM111 = HistFac.makeTH1D("1 Particle, Uncharged",
+   //                                  "mass [MeV/c^2]","#",
+   //                                  mass_bins,
+   //                                  "h_MM111"
+   //                                  );
+   // h3D_MM111 = HistFac.makeTH3D("1 Particle, Uncharged",
+   //                              "Missing Mass [MeV]",
+   //                              "Angle [deg]",
+   //                              "Tagger Channel",
+   //                              mass_bins,
+   //                              angle_bins,
+   //                              taggerchannel_bins ,
+   //                              "h3D_MM111"
+   //                              );
+//    h3D_MM111_projX = HistFac.makeTH1D("1 Particle, Uncharged",
+//                                     "mass [MeV/c^2]","#",
+//                                     mass_bins,
+//                                     "h3D_MM111_projX"
+//                                     );
+//    h_MM112011 = HistFac.makeTH1D("2 Particles, Open Ang < 15, "
+//                                  "Coplanar, Uncharged",
+//                                  "mass [MeV/c^2]","#",
+//                                  mass_bins,
+//                                  "h_MM112011"
+//                                     );
+//    h3D_MM112011 = HistFac.makeTH3D("2 Particles, Open Ang < 15, "
+//                                    "Coplanar, Uncharged",
+//                                    "Missing Mass [MeV]",
+//                                    "Angle [deg]",
+//                                    "Tagger Channel",
+//                                    mass_bins,
+//                                    angle_bins,
+//                                    taggerchannel_bins ,
+//                                    "h3D_MM112011"
+//                                    );
+//    h3D_MM112011_projX = HistFac.makeTH1D("2 Particles, Open Ang < 15, "
+//                                  "Coplanar, Uncharged",
+//                                  "mass [MeV/c^2]","#",
+//                                  mass_bins,
+//                                  "h3D_MM112011_projX"
+//                                     );
+//    h_MM112011_switch = HistFac.makeTH1D("2 Particles, One is Uncharged, "
+//                                         "Open Ang < 15, Coplanar",
+//                                         "mass [MeV/c^2]","#",
+//                                         mass_bins,
+//                                         "h_MM112011_switch"
+//                                         );
+//    h3D_MM112011_switch = HistFac.makeTH3D("2 Particles, One is Uncharged, "
+//                                           "Open Ang < 15, Coplanar",
+//                                           "Missing Mass [MeV]",
+//                                           "Angle [deg]",
+//                                           "Tagger Channel",
+//                                           mass_bins,
+//                                           angle_bins,
+//                                           taggerchannel_bins ,
+//                                           "h3D_MM112011_switch"
+//                                           );
+//    h3D_MM112011_switch_projX = HistFac.makeTH1D("2 Particles, One is Uncharged, "
+//                                         "Open Ang < 15, Coplanar",
+//                                         "mass [MeV/c^2]","#",
+//                                         mass_bins,
+//                                         "h3D_MM112011_switch_projX"
+//                                         );
     h_ScalarCounts = HistFac.makeTH1D("Total Counts in Tagger",
                                       "Tagger Channel","#",
                                       taggerchannel_bins,
                                       "h_ScalarCounts");
-    h_MMpi0 = HistFac.makeTH1D("Pi0 Missing Mass",
-                                      "Missing Mass","#",
+    h_MM2 = HistFac.makeTH1D("#pi^0 Missing Mass",
+                                      "Missing Mass (MeV) ","#",
+                                      mass_bins_pi0,
+                                      "h_MM2");
+    h_MMpi0 = HistFac.makeTH1D("#pi^0 Missing Mass",
+                                      "Missing Mass (MeV) ","#",
                                       mass_bins_pi0,
                                       "h_MMpi0");
-    h_MMhe4 = HistFac.makeTH1D("He4 Missing Energy",
-                                          "Missing Energy","#",
-                                          missing_energy_bins,
-                                          "h_MMhe4");
-    h_MEpi0 = HistFac.makeTH1D("Pi0 Missing Energy in CM Frame",
-                                      "Missing Energy","#",
+//    h_MMhe4 = HistFac.makeTH1D("#^4 He Missing Energy",
+//                                          "Missing Energy (MeV)","#",
+//                                          missing_energy_bins,
+//                                          "h_MMhe4");
+    h_MEpi0 = HistFac.makeTH1D("#pi^0 Missing Energy in CM Frame",
+                                      "Missing Energy (MeV)","#",
                                       missing_energy_bins,
                                       "h_MEpi0");
-    h_MMpi0_3 = HistFac.makeTH1D("Pi0 Missing Mass",
-                                          "Missing Mass","#",
-                                          mass_bins_pi0,
-                                          "h_MMpi0_3");
-    h_MMhe4_3 = HistFac.makeTH1D("He4 Missing Energy",
-                                              "Missing Energy","#",
-                                              missing_energy_bins,
-                                              "h_MMhe4_3");
-    h_MEpi0_3 = HistFac.makeTH1D("Pi0 Missing Energy in CM Frame",
-                                          "Missing Energy","#",
-                                          missing_energy_bins,
-                                          "h_MEpi0_3");
-    h3D_MEpi0 = HistFac.makeTH3D("Pi0 Missing Energy in CM Frame",
-                                           "Missing Energy [MeV]",
-                                           "Theta [deg]",
+//    h_MMpi0_3 = HistFac.makeTH1D("Pi0 Missing Mass",
+//                                          "Missing Mass","#",
+//                                          mass_bins_pi0,
+//                                          "h_MMpi0_3");
+//    h_MMhe4_3 = HistFac.makeTH1D("He4 Missing Energy",
+//                                              "Missing Energy","#",
+//                                              missing_energy_bins,
+//                                              "h_MMhe4_3");
+//    h_MEpi0_3 = HistFac.makeTH1D("Pi0 Missing Energy in CM Frame",
+//                                          "Missing Energy","#",
+//                                          missing_energy_bins,
+//                                          "h_MEpi0_3");
+    h3D_MEpi0 = HistFac.makeTH3D("#pi^0 Missing Energy in CM Frame",
+                                           "Missing Energy (MeV)",
+                                           "#theta (degrees)",
                                            "Tagger Channel",
                                            missing_energy_bins,
                                            angle_bins,
@@ -551,26 +555,26 @@ void He4Pi0::ProcessEvent(const TEvent& event, manager_t&)
 
 //             -------------- 1 Particle Events --------------
 
-        if (event.Reconstructed().Candidates.size() == 1)
-        {
-            for (const auto& candidate : event.Reconstructed().Candidates)
-            {
+//        if (event.Reconstructed().Candidates.size() == 1)
+//        {
+//            for (const auto& candidate : event.Reconstructed().Candidates)
+//            {
 
 //              ------ Compton ------
 
-                missing_mass = GetMissingMass(candidate, target_vec, incoming_vec);
+//                missing_mass = GetMissingMass(candidate, target_vec, incoming_vec);
 
-                if (He4Pi0::IsParticleCharged(candidate.VetoEnergy) == false)
-                {
+//                if (He4Pi0::IsParticleCharged(candidate.VetoEnergy) == false)
+//                {
                     // 1 particle in event, particle is uncharged
-                    h_MM111->Fill(missing_mass, weight);
+//                    h_MM111->Fill(missing_mass, weight);
 
                     // Filling 3D Plot
-                    h3D_MM111->Fill(missing_mass, std_ext::radian_to_degree(candidate.Theta),
-                                    taggerhit.Channel, weight);
-                }
-            }
-        }
+//                    h3D_MM111->Fill(missing_mass, std_ext::radian_to_degree(candidate.Theta),
+//                                    taggerhit.Channel, weight);
+//                }
+//            }
+//        }
 
 
 //             -------------- 2 Particle Events --------------
@@ -579,13 +583,16 @@ void He4Pi0::ProcessEvent(const TEvent& event, manager_t&)
         {
             const auto& candidates = event.Reconstructed().Candidates;
 
+            // Calculate the pi0 missing mass from the two particles
+            pi0_missing_mass = GetPi0MissingMass(candidates.front(), candidates.back());
+            h_MM2->Fill(pi0_missing_mass,weight);
+
 //          ------ Pi0 Production ------
 
             // Only keep the particles if they're two photons
             if(IsTwoPhotons(candidates))
             {
-                // Calculate pi0 missing mass from the two photons
-                pi0_missing_mass = GetPi0MissingMass(candidates.front(), candidates.back());
+                // Plot missing mass only for two photons
                 h_MMpi0->Fill(pi0_missing_mass, weight);
 
                 // Cut events well outside the pi0 missing mass peak
@@ -594,8 +601,8 @@ void He4Pi0::ProcessEvent(const TEvent& event, manager_t&)
                 {
                     // Method 1: Calculate missing energy of He4 nucleus from the reconstructed pi0
                     // This peak should all be pi0 production events
-                    missing_energy = GetHe4MissingEnergy(candidates.front(), candidates.back(), target_vec, incoming_vec);
-                    h_MMhe4->Fill(missing_energy, weight);
+                    //missing_energy = GetHe4MissingEnergy(candidates.front(), candidates.back(), target_vec, incoming_vec);
+                    //h_MMhe4->Fill(missing_energy, weight);
 
                     // Method 2: Calculate missing energy of pi0 in CM frame from the expected He4 target
                     // This peak should similarly all be pi0 events
@@ -615,107 +622,107 @@ void He4Pi0::ProcessEvent(const TEvent& event, manager_t&)
             // Keeping only the 2 particles in which one is charged and
             // the other is not. Using the uncharged particle to calc
             // the missing mass
-            if (IsChargedUncharged(candidates) == 1)
-            {
+//            if (IsChargedUncharged(candidates) == 1)
+//            {
                 // Opening angle cut
-                if( IsOpeningAngle2(candidates,target_vec,incoming_vec, 1) == true )
-                {
+//                if( IsOpeningAngle2(candidates,target_vec,incoming_vec, 1) == true )
+//                {
                     // Colpanar cut
-                    if ( IsCoplanar(candidates) == true )
-                    {
-                        missing_mass = GetMissingMass(candidates.front(),
-                                                      target_vec, incoming_vec);
+//                    if ( IsCoplanar(candidates) == true )
+//                    {
+//                        missing_mass = GetMissingMass(candidates.front(),
+//                                                      target_vec, incoming_vec);
 
                         // 2 particles in event, one is charged and the other is not,
                         // opening angle < 15 degrees, coplanar
-                        h_MM112011_switch->Fill(missing_mass, weight);
+//                        h_MM112011_switch->Fill(missing_mass, weight);
 
                         // Fill 3D histogram
-                        h3D_MM112011_switch->Fill(missing_mass,
-                                                  std_ext::radian_to_degree(candidates.front().Theta),
-                                                  taggerhit.Channel,
-                                                  weight);
-                    }
-                }
-            }
+//                        h3D_MM112011_switch->Fill(missing_mass,
+//                                                  std_ext::radian_to_degree(candidates.front().Theta),
+//                                                  taggerhit.Channel,
+//                                                  weight);
+//                    }
+//                }
+//            }
 
             // All again but with other configuration
-            if (IsChargedUncharged(candidates) == 2)
-            {
+//            if (IsChargedUncharged(candidates) == 2)
+//            {
                 // Opening angle cut
-                if( IsOpeningAngle2(candidates,target_vec,incoming_vec, 2) == true )
-                {
+//                if( IsOpeningAngle2(candidates,target_vec,incoming_vec, 2) == true )
+//                {
                     // Colpanar cut
-                    if ( IsCoplanar(candidates) == true )
-                    {
-                        missing_mass = GetMissingMass(candidates.back(),
-                                                      target_vec, incoming_vec);
+//                    if ( IsCoplanar(candidates) == true )
+//                    {
+//                        missing_mass = GetMissingMass(candidates.back(),
+//                                                      target_vec, incoming_vec);
 
                         // 2 particles in event, one is charged and the other is not,
                         // opening angle < 15 degrees, coplanar
-                        h_MM112011_switch->Fill(missing_mass, weight);
+//                        h_MM112011_switch->Fill(missing_mass, weight);
 
                         // Fill 3D histogram
-                        h3D_MM112011_switch->Fill(missing_mass,
-                                                  std_ext::radian_to_degree(candidates.back().Theta), // I think this should be back
-                                                  taggerhit.Channel,
-                                                  weight);
-                    }
-                }
+//                        h3D_MM112011_switch->Fill(missing_mass,
+//                                                  std_ext::radian_to_degree(candidates.back().Theta), // I think this should be back
+//                                                  taggerhit.Channel,
+//                                                  weight);
+//                    }
+//                }
 
-            }
+//            }
 
             // Check if opening angle is < 15 deg
-            if (IsOpeningAngle(candidates, target_vec, incoming_vec) == 1 )
-            {
+//            if (IsOpeningAngle(candidates, target_vec, incoming_vec) == 1 )
+//            {
                 // Keep only coplanar events
-                if (IsCoplanar(candidates) == true )
-                {
+//                if (IsCoplanar(candidates) == true )
+//                {
                     // Cut charged particles
-                    if (IsParticleCharged(candidates.front().VetoEnergy) == false)
-                    {
-                        missing_mass = GetMissingMass
-                                 (candidates.front(), target_vec, incoming_vec);
+//                    if (IsParticleCharged(candidates.front().VetoEnergy) == false)
+//                    {
+//                        missing_mass = GetMissingMass
+//                                 (candidates.front(), target_vec, incoming_vec);
 
                         // 2 particles in event, open ang < 15, uncharged,
                         // event is coplanar
-                        h_MM112011->Fill(missing_mass, weight);
+//                        h_MM112011->Fill(missing_mass, weight);
                         
                         // Fill 3D histogram
-                        h3D_MM112011->Fill(missing_mass,
-                                           std_ext::radian_to_degree(candidates.front().Theta),
-                                           taggerhit.Channel,
-                                           weight);
-                    }
-                }
-            }
+//                        h3D_MM112011->Fill(missing_mass,
+//                                           std_ext::radian_to_degree(candidates.front().Theta),
+//                                           taggerhit.Channel,
+//                                           weight);
+//                    }
+//                }
+//            }
 
 
             // All that again but for the other configuration
-            if (IsOpeningAngle(candidates, target_vec, incoming_vec) == 2 )
-            {
+//            if (IsOpeningAngle(candidates, target_vec, incoming_vec) == 2 )
+//            {
                 // Keep only coplanar events
-                if (IsCoplanar(candidates) == true )
-                {
+//                if (IsCoplanar(candidates) == true )
+//                {
                     // Cut charged particles
-                    if (IsParticleCharged(candidates.back().VetoEnergy) == false)
-                    {
-                        missing_mass = GetMissingMass
-                                 (candidates.back(), target_vec, incoming_vec);
+//                    if (IsParticleCharged(candidates.back().VetoEnergy) == false)
+//                    {
+//                        missing_mass = GetMissingMass
+//                                 (candidates.back(), target_vec, incoming_vec);
 
                         // 2 particles in event, open ang < 15, uncharged,
                         // event is coplanar
-                        h_MM112011->Fill(missing_mass, weight);
+//                        h_MM112011->Fill(missing_mass, weight);
 
                         // Fill 3D histogram
-                        h3D_MM112011->Fill(missing_mass,
-                                           std_ext::radian_to_degree(candidates.back().Theta),
-                                           taggerhit.Channel,
-                                           weight);
-                    }
-                }
-            }
-        }
+//                        h3D_MM112011->Fill(missing_mass,
+//                                           std_ext::radian_to_degree(candidates.back().Theta),
+//                                           taggerhit.Channel,
+//                                           weight);
+//                    }
+//                }
+//            }
+//        }
 
 //             -------------- 3 Particle Events --------------
 
@@ -836,6 +843,7 @@ void He4Pi0::ProcessEvent(const TEvent& event, manager_t&)
         PlotCounts();
     }
 }
+}
 
 void He4Pi0::Finish()
 {
@@ -843,12 +851,12 @@ void He4Pi0::Finish()
     // I think I need to put in parameters for the projection
     // Based on the scaling?
     // I think they're working but let's check
-    h3D_MM111_projX =
-            h3D_MM111->ProjectionX();
-    h3D_MM112011_projX =
-            h3D_MM112011->ProjectionX();
-    h3D_MM112011_switch_projX =
-            h3D_MM112011_switch->ProjectionX();
+    //h3D_MM111_projX =
+    //        h3D_MM111->ProjectionX();
+    //h3D_MM112011_projX =
+    //        h3D_MM112011->ProjectionX();
+    //h3D_MM112011_switch_projX =
+    //        h3D_MM112011_switch->ProjectionX();
 
     LOG(INFO) << "Seen scaler-blocks: " << seenScalerBlocks;
 }
@@ -857,38 +865,38 @@ void He4Pi0::Finish()
 
 void He4Pi0::ShowResult()
 {
-
     ant::canvas(GetName()+": Pi0 Production Plots")
-	    << h_MMpi0
-        << h_MMhe4
+        << h_MM2
+        << h_MMpi0
+//        << h_MMhe4
         << h_MEpi0
         << h3D_MEpi0
 	    << endc;
 
-    ant::canvas(GetName()+": 3 Particle Events, Pi0 Prodution")
-            << h_MMpi0_3
-            << h_MMhe4_3
-            << h_MEpi0_3
-            << endc;
+    //ant::canvas(GetName()+": 3 Particle Events, Pi0 Prodution")
+    //        << h_MMpi0_3
+    //        << h_MMhe4_3
+    //        << h_MEpi0_3
+    //        << endc;
 
     ant::canvas(GetName()+": Tagger Time Plots")
             << h_WeightedTaggerTime
             << endc; // actually draws the canvas
 
-    ant::canvas(GetName()+": 1 Particle Events")
-            << h_MM111
-            << h3D_MM111
-            << h3D_MM111_projX
-            << endc;
+    //ant::canvas(GetName()+": 1 Particle Events")
+    //        << h_MM111
+    //        << h3D_MM111
+    //        << h3D_MM111_projX
+    //        << endc;
 
-    ant::canvas(GetName()+": Events with Opening Angle < 15")
-            << h_MM112011
-            << h3D_MM112011
-            << h3D_MM112011_projX
-            << h_MM112011_switch
-            << h3D_MM112011_switch
-            << h3D_MM112011_switch_projX
-            << endc;
+    //ant::canvas(GetName()+": Events with Opening Angle < 15")
+    //        << h_MM112011
+    //        << h3D_MM112011
+    //        << h3D_MM112011_projX
+    //        << h_MM112011_switch
+    //        << h3D_MM112011_switch
+    //        << h3D_MM112011_switch_projX
+    //        << endc;
 
     ant::canvas(GetName()+": Scalar Counts")
             << h_ScalarCounts

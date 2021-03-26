@@ -106,39 +106,42 @@ private:
     TH1D* h_WeightedTaggerTime;
 
     // 1 Particle cuts
-    TH1D* h_MM111;
+    //TH1D* h_MM111;
 
     // Opening angle cuts
-    TH1D* h_MM112011;
-    TH1D* h_MM112011_switch;
+    //TH1D* h_MM112011;
+    //TH1D* h_MM112011_switch;
 
     // 3D Plots
-    TH3D* h3D_MM111;
-    TH3D* h3D_MM112011;
-    TH3D* h3D_MM112011_switch;
+    //TH3D* h3D_MM111;
+    //TH3D* h3D_MM112011;
+    //TH3D* h3D_MM112011_switch;
 
     // 3D Plot Projections
-    TH1D* h3D_MM111_projX;
-    TH1D* h3D_MM112011_projX;
-    TH1D* h3D_MM112011_switch_projX;
+    //TH1D* h3D_MM111_projX;
+    //TH1D* h3D_MM112011_projX;
+    //TH1D* h3D_MM112011_switch_projX;
 
     // Scalar Counter
     TH1D* h_ScalarCounts;
-    TH1D* h_ScalarCountsEnergy;
+    //TH1D* h_ScalarCountsEnergy;
 
     // Pi0 Production Histograms
     TH1D* h_MMpi0;
-    TH1D* h_MMhe4;
+//    TH1D* h_MMhe4;
     TH1D* h_MEpi0;
 
     // Pi0 Production for 3 Particle Events
-    TH1D* h_MMpi0_3;
-    TH1D* h_MMhe4_3;
-    TH1D* h_MEpi0_3;
+    //TH1D* h_MMpi0_3;
+    //TH1D* h_MMhe4_3;
+    //TH1D* h_MEpi0_3;
 
     // 3D Pi0 ME Histogram
     TH3D* h3D_MEpi0;
-    TH3D* h3D_MEpi0_convert;
+    //TH3D* h3D_MEpi0_convert;
+
+    // Stages of Cuts
+    TH1D* h_MM2;
 
     // Stuff for PR cut
     PromptRandom::Switch promptrandom;
