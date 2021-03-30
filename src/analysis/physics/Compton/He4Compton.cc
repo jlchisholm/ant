@@ -408,65 +408,65 @@ double He4Compton::GetMissingEnergy(const TCandidate& candidate,
 //                     const LorentzVec target,
 //                     const LorentzVec incoming,
 //                     const int IsChargedUncharged_output)
-{
-    LorentzVec scattered;
-    LorentzVec missing;
-    LorentzVec recoil;
+//{
+//    LorentzVec scattered;
+//    LorentzVec missing;
+//    LorentzVec recoil;
 
-    vec3 front_unit_vec = vec3(candidates.front());
-    vec3 back_unit_vec = vec3(candidates.back());
+//    vec3 front_unit_vec = vec3(candidates.front());
+//    vec3 back_unit_vec = vec3(candidates.back());
 
-    double opening_angle;
+//    double opening_angle;
 
-    if (IsChargedUncharged_output == 1)
-    {
-        scattered = LorentzVec({front_unit_vec.x*candidates.front().CaloEnergy,
-                                    front_unit_vec.y*candidates.front().CaloEnergy,
-                                    front_unit_vec.z*candidates.front().CaloEnergy},
-                                    candidates.front().CaloEnergy);
+ //   if (IsChargedUncharged_output == 1)
+ //   {
+ //       scattered = LorentzVec({front_unit_vec.x*candidates.front().CaloEnergy,
+ //                                   front_unit_vec.y*candidates.front().CaloEnergy,
+ //                                   front_unit_vec.z*candidates.front().CaloEnergy},
+ //                                   candidates.front().CaloEnergy);
 
-        missing = incoming + target - scattered;
+ //       missing = incoming + target - scattered;
 
-        recoil = LorentzVec({back_unit_vec.x*candidates.back().CaloEnergy,
-                                 back_unit_vec.y*candidates.back().CaloEnergy,
-                                 back_unit_vec.z*candidates.back().CaloEnergy},
-                                 candidates.back().CaloEnergy);
+ //       recoil = LorentzVec({back_unit_vec.x*candidates.back().CaloEnergy,
+ //                                back_unit_vec.y*candidates.back().CaloEnergy,
+ //                                back_unit_vec.z*candidates.back().CaloEnergy},
+ //                                candidates.back().CaloEnergy);
 
-        opening_angle = 180*recoil.Angle(missing)/M_PI;
+//        opening_angle = 180*recoil.Angle(missing)/M_PI;
 
-        if (opening_angle < 15.0 ) { return true; }
+//        if (opening_angle < 15.0 ) { return true; }
 
-        else { return false; }
-    }
+//        else { return false; }
+//    }
 
-    if (IsChargedUncharged_output == 2)
-    {
-        scattered = LorentzVec({back_unit_vec.x*candidates.back().CaloEnergy,
-                                    back_unit_vec.y*candidates.back().CaloEnergy,
-                                    back_unit_vec.z*candidates.back().CaloEnergy},
-                                    candidates.back().CaloEnergy);
+//    if (IsChargedUncharged_output == 2)
+//    {
+//        scattered = LorentzVec({back_unit_vec.x*candidates.back().CaloEnergy,
+//                                    back_unit_vec.y*candidates.back().CaloEnergy,
+//                                    back_unit_vec.z*candidates.back().CaloEnergy},
+//                                    candidates.back().CaloEnergy);
 
-        missing = incoming + target - scattered;
+//        missing = incoming + target - scattered;
 
-        recoil = LorentzVec({front_unit_vec.x*candidates.front().CaloEnergy,
-                                 front_unit_vec.y*candidates.front().CaloEnergy,
-                                 front_unit_vec.z*candidates.front().CaloEnergy},
-                                 candidates.front().CaloEnergy);
+//        recoil = LorentzVec({front_unit_vec.x*candidates.front().CaloEnergy,
+//                                 front_unit_vec.y*candidates.front().CaloEnergy,
+//                                 front_unit_vec.z*candidates.front().CaloEnergy},
+//                                 candidates.front().CaloEnergy);
 
-        opening_angle = 180*recoil.Angle(missing)/M_PI;
+//        opening_angle = 180*recoil.Angle(missing)/M_PI;
 
-        if (opening_angle < 15.0 ) { return true; }
+//        if (opening_angle < 15.0 ) { return true; }
 
-        else { return false; }
-    }
+//        else { return false; }
+//    }
 
-    else
-    {
-        LOG(ERROR) << "Invalid IsChargedUncharged_output, "
-                      "function returns false";
-        return false;
-    }
-}
+//    else
+//    {
+//        LOG(ERROR) << "Invalid IsChargedUncharged_output, "
+//                      "function returns false";
+//        return false;
+//    }
+//}
 
 // ------------------------- Other Methods -------------------------
 
