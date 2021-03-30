@@ -56,30 +56,30 @@ public:
     // (explainations in cc file)
     bool IsParticleCharged(double veto_energy);
 
-    int IsChargedUncharged(const TCandidateList& candidates);
+//    int IsChargedUncharged(const TCandidateList& candidates);
 
-    double GetMissingMass(const TCandidate& candidate,
-                          const LorentzVec target,
-                          const LorentzVec incoming);
+//    double GetMissingMass(const TCandidate& candidate,
+//                          const LorentzVec target,
+//                          const LorentzVec incoming);
 
     double GetMissingEnergy(const TCandidate& candidate,
                             const LorentzVec target,
                             const LorentzVec photon);
 
-    double GetCloserMM(const TCandidateList& candidates,
-                       const LorentzVec target,
-                       const LorentzVec incoming);
+//    double GetCloserMM(const TCandidateList& candidates,
+//                       const LorentzVec target,
+//                       const LorentzVec incoming);
 
-    bool IsCoplanar(const TCandidateList& candidates);
+//    bool IsCoplanar(const TCandidateList& candidates);
 
-    int IsOpeningAngle(const TCandidateList& candidates,
-                       const LorentzVec target,
-                       const LorentzVec incoming);
+//    int IsOpeningAngle(const TCandidateList& candidates,
+//                       const LorentzVec target,
+//                       const LorentzVec incoming);
 
-    bool IsOpeningAngle2(const TCandidateList& candidates,
-                         const LorentzVec target,
-                         const LorentzVec incoming,
-                         const int IsChargedUncharged_output);
+//    bool IsOpeningAngle2(const TCandidateList& candidates,
+//                         const LorentzVec target,
+//                         const LorentzVec incoming,
+//                         const int IsChargedUncharged_output);
 
 // ------------------- Other Methods -------------------
 
@@ -105,7 +105,8 @@ private:
 
     // 1 Particle cuts
 //    TH1D* h_MM101;
-    TH1D* h_MM111;
+//    TH1D* h_MM111;
+    TH1D* h_ME;
     TH1D* h_ME1;
 
     // Preliminary 2 particle cuts
@@ -122,21 +123,21 @@ private:
 //    TH1D* h_MM102001;
 //    TH1D* h_MM112001;
 //    TH1D* h_MM102011;
-    TH1D* h_MM112011;
-    // Uncharged/Charged cut done before open ang cut
+//    TH1D* h_MM112011;
+//    // Uncharged/Charged cut done before open ang cut
 //    TH1D* h_MM112001_switch;
-    TH1D* h_MM112011_switch;
+//    TH1D* h_MM112011_switch;
 
     // 3D Plots
-    TH3D* h3D_MM111;
-    TH3D* h3D_MM112011;
-    TH3D* h3D_MM112011_switch;
+//    TH3D* h3D_MM111;
+//    TH3D* h3D_MM112011;
+//    TH3D* h3D_MM112011_switch;
     TH3D* h3D_ME1;
 
     // 3D Plot Projections
-    TH1D* h3D_MM111_projX;
-    TH1D* h3D_MM112011_projX;
-    TH1D* h3D_MM112011_switch_projX;
+//    TH1D* h3D_MM111_projX;
+//    TH1D* h3D_MM112011_projX;
+//    TH1D* h3D_MM112011_switch_projX;
 
     // Scalar Counter
     TH1D* h_ScalarCounts;
