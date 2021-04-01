@@ -30,17 +30,22 @@ He4Compton::He4Compton(const string& name, OptionsPtr opts) :
                                     time_bins,
                                     "h_WeightedTaggerTime"
                                     );
-//    h_MM111 = HistFac.makeTH1D("1 Particle, Uncharged",
-//                                     "mass [MeV/c^2]","#",
-//                                     mass_bins,
-//                                     "h_MM111"
-//                                     );
-    h_ME = HistFac.makeTH1D("^{4}He Missing Energy in CM Frame",
+    h_ME_He4 = HistFac.makeTH1D("^{4}He Missing Energy in CM Frame",
+                                     "Missing Energy (MeV)","#",
+                                     energy_bins,
+                                     "h_ME_He4"
+                                     );
+    h_ME1_He4 = HistFac.makeTH1D("^{4}He Missing Energy in CM Frame",
+                                     "Missing Energy (MeV)","#",
+                                     energy_bins,
+                                     "h_ME1_He4"
+                                     );
+    h_ME = HistFac.makeTH1D("#gamma Missing Energy in CM Frame",
                             "Missing Energy (MeV)","#",
                             energy_bins,
                             "h_ME"
                             );
-    h_ME1 = HistFac.makeTH1D("^{4}He Missing Energy in CM Frame",
+    h_ME1 = HistFac.makeTH1D("#gamma Missing Energy in CM Frame",
                                      "Missing Energy (MeV)","#",
                                      energy_bins,
                                      "h_ME1"
@@ -54,7 +59,16 @@ He4Compton::He4Compton(const string& name, OptionsPtr opts) :
 //                                 taggerchannel_bins ,
 //                                 "h3D_MM111"
 //                                 );
-    h3D_ME1 = HistFac.makeTH3D("^{4}He Missing Energy in CM Frame",
+   h3D_ME1_He4 = HistFac.makeTH3D("^{4}He Missing Energy in CM Frame",
+                                 "Missing Energy (MeV)",
+                                 "Theta (degrees)",
+                                 "Tagger Channel",
+                                 energy_bins,
+                                 angle_bins,
+                                 taggerchannel_bins ,
+                                 "h3D_ME1_He4"
+                                 );
+    h3D_ME1 = HistFac.makeTH3D("#gamma Missing Energy in CM Frame",
                                  "Missing Energy (MeV)",
                                  "Theta (degrees)",
                                  "Tagger Channel",
@@ -226,22 +240,22 @@ bool He4Compton::IsParticleCharged(double veto_energy)
 // Input: a candidate and the 4 momentum vectors of the
 // incoming photon and He4 nucleus target. Output: the missing
 // mass
-//double He4Compton::GetMissingMass(const TCandidate& candidate,
-//                               const LorentzVec target,
-//                               const LorentzVec incoming)
-//{
-//    vec3 unit_vec = vec3(candidate);
-//    LorentzVec scattered = LorentzVec({unit_vec.x*candidate.CaloEnergy,
-//                                       unit_vec.y*candidate.CaloEnergy,
-//                                       unit_vec.z*candidate.CaloEnergy},
-//                                      candidate.CaloEnergy);
+double He4Compton::GetMissingMass(const TCandidate& candidate,
+                               const LorentzVec target,
+                               const LorentzVec incoming)
+{
+    vec3 unit_vec = vec3(candidate);
+    LorentzVec scattered = LorentzVec({unit_vec.x*candidate.CaloEnergy,
+                                       unit_vec.y*candidate.CaloEnergy,
+                                     unit_vec.z*candidate.CaloEnergy},
+                                      candidate.CaloEnergy);
 
     // Calculating the mass of the recoil He4 nucleus (missing
     // mass) from the 4 momentum vector using .M()
     // Should be 3727.84 MeV if there was a Compton event
     // involving this particle
-//    return (incoming + target - scattered).M();
-//}
+    return (incoming + target - scattered).M();
+}
 
 
 // Input: scattered photon, target, and incoming photon 4-momentum vectors
@@ -555,8 +569,11 @@ void He4Compton::ProcessEvent(const TEvent& event, manager_t&)
         {
             for (const auto& candidate : event.Reconstructed().Candidates)
             {
-                //missing_mass = GetMissingMass(candidate, target_vec, incoming_vec);
-                missing_energy = GetMissingEnergy(candidate, target_vec, incoming_vec);
+                missing_mass = GetMissingMass(candidate, target_vec, incoming_vec);
+                missing_energy_he4 = target_mass - missing_mass;
+		h_ME_He4->Fill(missing_energy_he4,weight);
+
+		missing_energy = GetMissingEnergy(candidate, target_vec, incoming_vec);
                 h_ME->Fill(missing_energy,weight);
 
                 // 1 particle in event
@@ -566,13 +583,19 @@ void He4Compton::ProcessEvent(const TEvent& event, manager_t&)
                 {
                     // 1 particle in event, particle is uncharged
                    // h_MM111->Fill(missing_mass, weight);
-                    h_ME1->Fill(missing_energy, weight);
+                    
+			h_ME1_He4->Fill(missing_energy_he4,weight);
+			h_ME1->Fill(missing_energy, weight);
+
+		    
 
 
                     // Filling 3D Plot
                     //h3D_MM111->Fill(missing_mass, std_ext::radian_to_degree(candidate.Theta),
                     //                taggerhit.Channel, weight);
-                    h3D_ME1->Fill(missing_energy, std_ext::radian_to_degree(candidate.Theta),
+                    	h3D_ME1_He4->Fill(missing_energy_he4, std_ext::radian_to_degree(candidate.Theta),
+                                    taggerhit.Channel, weight);
+			h3D_ME1->Fill(missing_energy, std_ext::radian_to_degree(candidate.Theta),
                                     taggerhit.Channel, weight);
                 }
             }
@@ -887,12 +910,15 @@ void He4Compton::ShowResult()
             << endc;
 
     ant::canvas(GetName()+": Missing Energy")
-            << h_ME
+            << h_ME_He4
+	    << h_ME1_He4
+	    << h_ME
             << h_ME1
             << endc;
 
     ant::canvas(GetName()+": Missing Energy 3D")
-            << h3D_ME1
+            << h3D_ME1_He4
+	    << h3D_ME1
             << endc;
 }
 

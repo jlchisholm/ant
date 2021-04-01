@@ -58,9 +58,9 @@ public:
 
 //    int IsChargedUncharged(const TCandidateList& candidates);
 
-//    double GetMissingMass(const TCandidate& candidate,
-//                          const LorentzVec target,
-//                          const LorentzVec incoming);
+    double GetMissingMass(const TCandidate& candidate,
+                          const LorentzVec target,
+                          const LorentzVec incoming);
 
     double GetMissingEnergy(const TCandidate& candidate,
                             const LorentzVec target,
@@ -105,7 +105,8 @@ private:
 
     // 1 Particle cuts
 //    TH1D* h_MM101;
-//    TH1D* h_MM111;
+    TH1D* h_ME_He4;
+    TH1D* h_ME1_He4;
     TH1D* h_ME;
     TH1D* h_ME1;
 
@@ -132,6 +133,7 @@ private:
 //    TH3D* h3D_MM111;
 //    TH3D* h3D_MM112011;
 //    TH3D* h3D_MM112011_switch;
+    TH3D* h3D_ME1_He4;
     TH3D* h3D_ME1;
 
     // 3D Plot Projections
@@ -181,7 +183,7 @@ private:
     LorentzVec incoming_vec;
 
     double missing_mass;
-    double closer_missing_mass;
+    double missing_energy_he4;
     double missing_energy;
 
 };
